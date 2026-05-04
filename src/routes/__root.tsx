@@ -9,6 +9,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import NavBar from "#/components/NavBar";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
+import { PostHogProvider } from "../integrations/posthog/provider";
 import appCss from "../styles.css?url";
 
 interface MyRouterContext {
@@ -51,6 +52,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-sans antialiased wrap-anywhere">
+        <PostHogProvider>
         <ClerkProvider>
           <div id="root-layout">
             <header>
@@ -77,6 +79,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             ]}
           />
         </ClerkProvider>
+        </PostHogProvider>
         <Scripts />
       </body>
     </html>
